@@ -32,6 +32,14 @@ class UserState {
   int get hashCode => currentUser.hashCode;
 }
 
+abstract class UsersEvent {}
+
+class UserIncrementEvent {}
+
+class UserDecrementEvent {}
+
+class UserInitializeEvent {}
+
 class UsersBloc {
   final _userProvider = UserDataProvider();
   var _state = UserState(currentUser: User(0));
@@ -42,7 +50,7 @@ class UsersBloc {
   UsersBloc() {
     _initialize();
   }
-
+  void dispath(UsersEvent event) {}
   void updateState(UserState state) {
     if (_state == state) return;
     _state = state;
