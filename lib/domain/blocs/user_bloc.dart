@@ -40,6 +40,7 @@ class UserInitializeEvent implements UsersEvent {}
 
 class UsersBloc {
   final _userProvider = UserDataProvider();
+
   var _state = UserState(currentUser: User(0));
   final _stateController = StreamController<UsersEvent>.broadcast();
   late final Stream<UserState> _stateStream;
