@@ -1,5 +1,5 @@
-import 'package:bloc_counter_project/domain/blocs/user_bloc.dart';
-import 'package:bloc_counter_project/example_widget_block.dart';
+import 'package:bloc_counter_project/domain/blocs/user_cubit.dart';
+import 'package:bloc_counter_project/example_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,9 +18,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Provider<UsersBloc>(
-        create: (_) => UsersBloc(),
-        child: const ExampleWidget(),
+      // home: Provider<UsersBloc>(
+      //   create: (_) => UsersBloc(),
+      //   child: const ExampleWidget(),
+      //   dispose: (context, value) => value.close(),
+      // ),
+      home: Provider<UsersCubit>(
+        create: (_) => UsersCubit(),
+        child: const ExampleCubit(),
         dispose: (context, value) => value.close(),
       ),
     );
