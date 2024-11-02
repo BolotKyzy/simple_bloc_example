@@ -80,4 +80,8 @@ class UsersBloc {
       yield UserState(currentUser: user);
     }
   }
+
+  void close() {
+    _stateController.close();
+  }
 }
