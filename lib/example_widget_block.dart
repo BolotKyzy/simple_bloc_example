@@ -48,7 +48,9 @@ class AgeIncWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UsersBloc>();
-    return ElevatedButton(onPressed: bloc.incrementAge, child: const Text("+"));
+    return ElevatedButton(
+        onPressed: () => bloc.dispath(UserIncrementEvent()),
+        child: const Text("+"));
   }
 }
 
@@ -58,6 +60,8 @@ class AgeDecWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = context.read<UsersBloc>();
-    return ElevatedButton(onPressed: bloc.decrementAge, child: const Text("-"));
+    return ElevatedButton(
+        onPressed: () => bloc.dispath(UserDecrementEvent()),
+        child: const Text("-"));
   }
 }

@@ -49,14 +49,21 @@ class UsersBloc {
   UsersBloc() {
     dispath(UserInitializeEvent());
     _stateStream = _stateController.stream
-        .asyncExpand<UserState>(mapEventToState)
+        .asyncExpand<UserState>(_mapEventToState)
+        .asyncExpand(_updateState)
         .asBroadcastStream();
   }
   void dispath(UsersEvent event) {
     _stateController.add(event);
   }
 
-  Stream<UserState> mapEventToState(UsersEvent event) async* {
+  Stream<UserState> _updateState(UserState state) async* {
+    if (_state == state) return;
+    _state = state;
+    yield state;
+  }
+
+  Stream<UserState> _mapEventToState(UsersEvent event) async* {
     if (event is UserInitializeEvent) {
       final user = await _userProvider.loadValue();
       yield UserState(currentUser: user);

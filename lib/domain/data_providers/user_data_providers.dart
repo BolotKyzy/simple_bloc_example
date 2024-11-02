@@ -12,6 +12,7 @@ class UserDataProvider {
   }
 
   Future<void> saveValue(User user) async {
+    print(user.age);
     (await sharedPreferences).setInt('age', user.age);
   }
 }
