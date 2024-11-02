@@ -32,9 +32,12 @@ class _AgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UsersCubit, int>(builder: (context, state) {
-      return Text("${state}");
-    });
+    final age = context.select((UsersCubit b) => b.state.currentUser.age);
+    return Text("$age");
+
+    // return BlocBuilder<UsersCubit, UserState>(builder: (context, state) {
+    //   return Text("${state.currentUser.age}");
+    // });
   }
 }
 

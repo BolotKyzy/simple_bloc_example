@@ -1,7 +1,7 @@
 import 'package:bloc_counter_project/domain/blocs/user_cubit.dart';
 import 'package:bloc_counter_project/example_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,10 +23,9 @@ class MyApp extends StatelessWidget {
       //   child: const ExampleWidget(),
       //   dispose: (context, value) => value.close(),
       // ),
-      home: Provider<UsersCubit>(
+      home: BlocProvider<UsersCubit>(
         create: (_) => UsersCubit(),
         child: const ExampleCubit(),
-        dispose: (context, value) => value.close(),
       ),
     );
   }

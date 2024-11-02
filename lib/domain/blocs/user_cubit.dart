@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-
 import 'package:bloc_counter_project/domain/data_providers/user_data_providers.dart';
 import 'package:bloc_counter_project/domain/entity/user.dart';
 
@@ -34,30 +31,30 @@ class UserState {
   int get hashCode => currentUser.hashCode;
 }
 
-class UsersCubit extends Cubit<int> {
+class UsersCubit extends Cubit<UserState> {
   final _userProvider = UserDataProvider();
-  var _state = UserState(currentUser: User(0));
 
-  UsersCubit() : super(0) {
+  UsersCubit() : super(UserState(currentUser: User(0))) {
     _initialize();
   }
 
   Future<void> _initialize() async {
     final user = await _userProvider.loadValue();
-    emit(user.age);
+    final newState = state.copyWith(currentUSer: user);
+    emit(newState);
   }
 
   Future<void> incrementAge() async {
-    var user = _state.currentUser;
+    var user = state.currentUser;
     user = user.copyWith(age: user.age + 1);
     await _userProvider.saveValue(user);
-    emit(state + 1);
+    emit(state.copyWith(currentUSer: user));
   }
 
   Future<void> decrementAge() async {
-    var user = _state.currentUser;
+    var user = state.currentUser;
     user = user.copyWith(age: user.age - 1);
     await _userProvider.saveValue(user);
-    emit(state - 1);
+    emit(state.copyWith(currentUSer: user));
   }
 }
