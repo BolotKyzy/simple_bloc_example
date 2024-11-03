@@ -51,19 +51,25 @@ class UserBloc extends Bloc<UsersEvent, UserState> {
       },
     );
     on<UserIncrementEvent>((event, emit) async {
-      print(" Increment - $event - $emit");
+      // print(" Increment - $event - $emit");
       var user = state.currentUser;
       user = user.copyWith(age: user.age + 1);
       await _userProvider.saveValue(user);
       emit(state.copyWith(currentUSer: user));
     });
     on<UserDecrementEvent>((event, emit) async {
-      print(" Decrement - $event - $emit");
+      // print(" Decrement - $event - $emit");
 
       var user = state.currentUser;
       user = user.copyWith(age: user.age - 1);
       await _userProvider.saveValue(user);
       emit(state.copyWith(currentUSer: user));
     });
+
+    @override
+    void onChange(Change<UserState> change) {
+      super.onChange(change);
+      print(change);
+    }
   }
 }

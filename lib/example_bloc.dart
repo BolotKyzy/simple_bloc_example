@@ -60,7 +60,7 @@ class AgeDecWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<UserBloc>();
     return ElevatedButton(
-        onPressed: () => bloc.add(UserIncrementEvent()),
+        onPressed: () => bloc.add(UserDecrementEvent()),
         child: const Text("-"));
   }
 }
