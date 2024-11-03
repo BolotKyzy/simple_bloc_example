@@ -1,4 +1,4 @@
-import 'package:bloc_counter_project/domain/blocs/user_bloc.dart';
+import 'package:bloc_counter_project/domain/blocs/user_custom_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,10 @@
 import 'package:bloc_counter_project/bloc_observer.dart';
-import 'package:bloc_counter_project/domain/blocs/user_cubit.dart';
-import 'package:bloc_counter_project/example_cubit.dart';
+import 'package:bloc_counter_project/domain/blocs/user_bloc.dart';
+import 'package:bloc_counter_project/example_bloc.dart';
+// import 'package:bloc_counter_project/domain/blocs/user_cubit.dart';
+// import 'package:bloc_counter_project/domain/blocs/user_custom_bloc.dart';
+// import 'package:bloc_counter_project/example_bloc.dart';
+// import 'package:bloc_counter_project/example_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,9 +29,13 @@ class MyApp extends StatelessWidget {
       //   child: const ExampleWidget(),
       //   dispose: (context, value) => value.close(),
       // ),
-      home: BlocProvider<UsersCubit>(
-        create: (_) => UsersCubit(),
-        child: const ExampleCubit(),
+      // home: BlocProvider<UsersCubit>(
+      //   create: (_) => UsersCubit(),
+      //   child: const ExampleCubit(),
+      // ),
+      home: BlocProvider<UserBloc>(
+        create: (_) => UserBloc(),
+        child: const ExampleBloc(),
       ),
     );
   }
