@@ -32,6 +32,7 @@ class _AgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<UserBloc>().add(UserInitializeEvent());
     final age = context.select((UserBloc b) => b.state.currentUser.age);
     return Text("$age");
 
