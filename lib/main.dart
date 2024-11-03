@@ -1,9 +1,11 @@
+import 'package:bloc_counter_project/bloc_observer.dart';
 import 'package:bloc_counter_project/domain/blocs/user_cubit.dart';
 import 'package:bloc_counter_project/example_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  Bloc.observer = BlocsObserver();
   runApp(const MyApp());
 }
 
